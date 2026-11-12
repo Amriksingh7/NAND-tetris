@@ -1,0 +1,16 @@
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/Mux.hdl
+/** 
+ * Multiplexor:
+ * if (sel = 0) out = a, else out = b
+ */
+CHIP Mux {
+    IN a, b, sel;
+    OUT out;
+
+    PARTS:
+    Not(in=sel, out=C);
+    And(a=a, b=C, out=x);
+    And(a=b, b=sel, out=y);
+    Or(a=x, b=y, out=out);
+}
